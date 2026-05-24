@@ -7,7 +7,7 @@
   <title>Para ti ❤️</title>
 
   <style>
-    
+
     * {
       margin: 0;
       padding: 0;
@@ -19,219 +19,333 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden; 
-      font-family: "Segoe UI", "apple-system", sans-serif; 
+      overflow: hidden;
+      font-family: "Segoe UI", sans-serif;
 
       background:
-        radial-gradient(circle at center, rgba(255, 210, 120, 0.25), transparent 30%),
-        linear-gradient(135deg, #2b0500 0%, #7a1400 35%, #ff7a00 70%, #ffd36a 100%);
+        radial-gradient(circle at center,
+        rgba(255, 210, 120, 0.25),
+        transparent 30%),
+
+        linear-gradient(
+        135deg,
+        #2b0500 0%,
+        #7a1400 35%,
+        #ff7a00 70%,
+        #ffd36a 100%);
     }
 
-    /* EFECTO DE FONDO: BRASAS FLOTANTES */
     body::after {
       content: "";
       position: absolute;
       inset: 0;
-      background-image: radial-gradient(circle, rgba(255, 230, 150, 0.8) 1px, transparent 2px);
+
+      background-image:
+      radial-gradient(circle,
+      rgba(255,230,150,0.8) 1px,
+      transparent 2px);
+
       background-size: 90px 90px;
+
       animation: brasas 10s linear infinite;
+
       opacity: 0.7;
+
       pointer-events: none;
-      z-index: 1;
     }
 
     @keyframes brasas {
-      from { background-position: 0 0; }
-      to { background-position: 0 -500px; }
+
+      from {
+        background-position: 0 0;
+      }
+
+      to {
+        background-position: 0 -500px;
+      }
     }
 
-    
     .carta {
+
       position: relative;
-      z-index: 2; /* Encima del efecto de brasas */
+
+      z-index: 2;
+
       width: min(92vw, 430px);
+
       padding: 30px;
+
       border-radius: 28px;
-      text-align:center;
-      background: rgba(45, 8, 0, 0.72);
-      border: 1px solid rgba(255, 220, 120, 0.5);
-      box-shadow: 0 0 25px rgba(255, 140, 0, 0.6),
-                  inset 0 0 18px rgba(255, 200, 100, 0.1);
+
+      text-align: center;
+
+      background: rgba(45,8,0,0.72);
+
+      border: 1px solid rgba(255,220,120,0.5);
+
+      box-shadow:
+      0 0 25px rgba(255,140,0,0.6),
+      inset 0 0 18px rgba(255,200,100,0.1);
+
       backdrop-filter: blur(8px);
-      transition: opacity 0.5s ease;
     }
 
-    /* ESTILOS DE TEXTO */
     .flama {
+
       font-size: 58px;
+
       margin-bottom: 10px;
+
       animation: latido 1.5s infinite;
     }
 
     @keyframes latido {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.12); }
+
+      0%,100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.12);
+      }
     }
 
     h1 {
+
       color: #ffd76d;
+
       font-size: 2.1rem;
+
       margin-bottom: 16px;
+
       text-shadow: 0 0 12px orange;
     }
 
     .intro {
+
       color: #fff0c2;
+
       line-height: 1.6;
+
       margin-bottom: 25px;
+
       font-size: 1.05rem;
     }
 
-    /* BOTÓN INICIAL */
     button {
+
       border: none;
+
       padding: 14px 22px;
+
       border-radius: 999px;
+
       font-size: 1rem;
+
       font-weight: bold;
+
       cursor: pointer;
+
       color: #4b1300;
-      background: linear-gradient(135deg, #fff1a8, #ffb22e, #ff6a00);
-      box-shadow: 0 0 18px rgba(255, 180, 40, 0.7);
+
+      background:
+      linear-gradient(
+      135deg,
+      #fff1a8,
+      #ffb22e,
+      #ff6a00);
+
+      box-shadow:
+      0 0 18px rgba(255,180,40,0.7);
+
       transition: all 0.3s ease;
     }
 
     button:hover {
+
       transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255, 180, 40, 0.9);
+
+      box-shadow:
+      0 0 25px rgba(255,180,40,0.9);
     }
 
-    /* Clase para ocultar elementos al presionar el botón */
-    .oculto {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    /* CONTENEDOR DEL SOBRE - OCULTO INICIALMENTE */
     .sobre-contenedor {
-      opacity: 0; /* Oculto con opacidad para poder animarlo */
-      display: none; /* También oculto para que no ocupe espacio */
-      position: relative;
-      margin-top: 30px;
-      z-index: 5; /* Asegura que el sobre esté encima de todo */
-    }
 
-    /* Animación para hacer aparecer el sobre */
-    @keyframes aparecerSobre {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* EL SOBRE (CUERPO INFERIOR) */
-    .sobre {
-      position: relative;
-      width: 280px;
-      height: 190px;
-      margin: auto;
-      background: linear-gradient(135deg, #8b2600, #ff8a1f);
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 5px 25px rgba(255, 120, 0, 0.7);
-    }
-
-    /* LA TAPA DEL SOBRE (SOLAPA) */
-    .tapa {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, #ffcf6b, #ff5a00);
-      clip-path: polygon(0 0, 100% 0, 50% 60%);
-      transform-origin: top;
-      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); /* Curva suave */
-      z-index: 3; /* Encima del papel inicialmente */
-    }
-
-    /* Estado de la tapa cuando se abre */
-    .abrir-tapa .tapa {
-      transform: rotateX(180deg);
-      clip-path: polygon(0 0, 100% 0, 50% 60%); 
-      z-index: 1; /* Pasa detrás del papel al abrirse */
-    }
-
-    /* EL PAPEL DENTRO DEL SOBRE */
-    .papel {
-      position: absolute;
-      left: 18px;
-      right: 18px;
-      bottom: 14px;
-      padding: 22px;
-      border-radius: 14px;
-      background: rgba(255, 248, 220, 0.98);
-      color: #5a1600;
-      box-shadow: 0 0 15px rgba(255, 240, 180, 0.6);
-      transform: translateY(35px); /* Posición inicial oculta dentro */
       opacity: 0;
-      transition: all 1.2s 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Sale con retardo */
-      z-index: 2; /* Detrás de la tapa cerrada, delante al abrirse */
+
+      display: none;
+
+      position: relative;
+
+      margin-top: 30px;
+
+      z-index: 5;
     }
 
-    /* Estado del papel cuando sale */
+    @keyframes aparecerSobre {
+
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .sobre {
+
+      position: relative;
+
+      width: 280px;
+
+      height: 190px;
+
+      margin: auto;
+
+      background:
+      linear-gradient(
+      135deg,
+      #8b2600,
+      #ff8a1f);
+
+      border-radius: 0 0 20px 20px;
+
+      box-shadow:
+      0 5px 25px rgba(255,120,0,0.7);
+    }
+
+    .tapa {
+
+      position: absolute;
+
+      width: 100%;
+
+      height: 100%;
+
+      background:
+      linear-gradient(
+      135deg,
+      #ffcf6b,
+      #ff5a00);
+
+      clip-path:
+      polygon(
+      0 0,
+      100% 0,
+      50% 60%);
+
+      transform-origin: top;
+
+      transition:
+      transform 1.2s cubic-bezier(0.4,0,0.2,1);
+
+      z-index: 3;
+    }
+
+    .abrir-tapa .tapa {
+
+      transform: rotateX(180deg);
+
+      z-index: 1;
+    }
+
+    .papel {
+
+      position: absolute;
+
+      left: 18px;
+
+      right: 18px;
+
+      bottom: 14px;
+
+      padding: 22px;
+
+      border-radius: 14px;
+
+      background:
+      rgba(255,248,220,0.98);
+
+      color: #5a1600;
+
+      box-shadow:
+      0 0 15px rgba(255,240,180,0.6);
+
+      transform: translateY(35px);
+
+      opacity: 0;
+
+      transition:
+      all 1.2s 0.6s cubic-bezier(0.4,0,0.2,1);
+
+      z-index: 2;
+    }
+
     .salir-papel .papel {
-      transform: translateY(-88px); /* Sube hasta salir */
+
+      transform: translateY(-88px);
+
       opacity: 1;
     }
 
-    /* CONTENIDO DEL MENSAJE ESCRITO */
     .papel h2 {
+
       color: #b92000;
+
       margin-bottom: 15px;
+
       font-size: 1.6rem;
-      text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
     }
 
     .papel p {
+
       line-height: 1.6;
+
       font-size: 1.05rem;
+
       margin-bottom: 12px;
     }
 
     .firma {
+
       margin-top: 18px;
+
       font-weight: bold;
+
       color: #a63a00;
+
       font-size: 1.1rem;
     }
 
-    /* CONTENEDOR DE LA MÚSICA (VISIBLE) */
     .musica-contenedor {
-      position: relative;
-      z-index: 6; /* Encima de todo */
+
       width: 100%;
+
       margin-top: 25px;
-      display: none; /* Oculto inicialmente */
+
+      display: none;
+
       opacity: 0;
-      transition: opacity 0.5s ease;
     }
 
-    /* Animación para el reproductor */
-    @keyframes aparecerMusica {
-      to { display: block; opacity: 1; }
-    }
-
-    /* ESTILO DEL REPRODUCTOR AUDIO */
     audio {
+
       width: 100%;
-      height: 38px;
+
+      margin-top: 10px;
+
       border-radius: 10px;
-      background-color: rgba(255, 255, 255, 0.1); /* Fondo sutil para móvil */
     }
 
-  
   </style>
 </head>
 
 <body>
 
-  <main class="carta" id="introCarta">
+  <main class="carta">
 
     <div class="flama">🔥</div>
 
@@ -243,36 +357,70 @@
       Hoy quería dejar que esa llama hablara por mí.
     </p>
 
-    <!-- Botón que inicia la animación y hace visible el reproductor -->
-    <button id="btnAbrir" onclick="secuenciaApertura()">
+    <button
+      id="btnAbrir"
+      onclick="secuenciaApertura()">
+
       Abrir mensaje
+
     </button>
 
-    <section id="sobreContenedor" class="sobre-contenedor">
+    <section
+      id="sobreContenedor"
+      class="sobre-contenedor">
 
       <div class="sobre">
+
         <div class="tapa"></div>
+
         <div class="papel">
-          <h2>Te amo Ari mi mitsuri ❤️</h2>
+
+          <h2>
+            Te amo Ari mi mitsuri ❤️
+          </h2>
+
           <p>
             Te amo por tu forma de ser,
             por lo especial que me haces sentir
             y porque contigo hasta algo sencillo
             se vuelve bonito.
           </p>
-          <p class="firma">Con cariño, Javier</p>
+
+          <p class="firma">
+            Con cariño, Javier
+          </p>
+
         </div>
+
       </div>
 
     </section>
 
-    <!-- Reproductor de música visible debajo de la carta -->
-    <div id="musicaContenedor" class="musica-contenedor">
-      <p style="color:#fff0c2; font-size:0.9rem; margin-bottom:8px;">Escucha esto mientras lees:</p>
-      <audio id="musica" controls loop>
-        <source src="Un_futuro_sin_ti.mp3" type="audio/mpeg">
-        Tu navegador no soporta el elemento de audio.
+    <div
+      id="musicaContenedor"
+      class="musica-contenedor">
+
+      <p
+        style="
+        color:#fff0c2;
+        font-size:0.9rem;
+        margin-bottom:8px;">
+
+        Escucha esto mientras lees:
+
+      </p>
+
+      <audio
+        id="musica"
+        controls
+        loop
+        preload="auto"
+        src="./Un_futuro_sin_ti.mp3">
+
+        Tu navegador no soporta audio.
+
       </audio>
+
     </div>
 
   </main>
@@ -280,46 +428,72 @@
   <script>
 
     function secuenciaApertura() {
-      // 1. Ocultar el botón y el texto introductorio
-      const btn = document.getElementById("btnAbrir");
-      const intro = document.getElementById("introCarta");
-      
-      btn.style.opacity = '0';
-      btn.style.pointerEvents = 'none';
 
-      // 2. Esperar medio segundo para que desaparezca el botón y luego mostrar el sobre
+      const btn =
+      document.getElementById(
+      "btnAbrir");
+
+      btn.style.opacity = "0";
+
+      btn.style.pointerEvents =
+      "none";
+
       setTimeout(() => {
-        const sobreCont = document.getElementById("sobreContenedor");
-        
-        sobreCont.style.display = "block";
-        sobreCont.style.animation = "aparecerSobre 0.5s forwards";
 
-        // 3. Otro breve retardo para iniciar la animación de apertura del sobre
+        const sobreCont =
+        document.getElementById(
+        "sobreContenedor");
+
+        sobreCont.style.display =
+        "block";
+
+        sobreCont.style.opacity =
+        "1";
+
+        sobreCont.style.animation =
+        "aparecerSobre 0.5s forwards";
+
         setTimeout(() => {
-          sobreCont.classList.add("abrir-tapa");
-          sobreCont.classList.add("salir-papel");
 
-          // 4. Esperar a que el papel salga del todo y entonces mostrar el reproductor
+          sobreCont.classList.add(
+          "abrir-tapa");
+
+          sobreCont.classList.add(
+          "salir-papel");
+
           setTimeout(() => {
-            const musicaCont = document.getElementById("musicaContenedor");
-            const musica = document.getElementById("musica");
-            
-            musicaCont.style.display = "block";
-            musicaCont.style.animation = "aparecerMusica 0.5s forwards";
-            
-            // Bajamos el volumen inicial para que no asuste
+
+            const musicaCont =
+            document.getElementById(
+            "musicaContenedor");
+
+            const musica =
+            document.getElementById(
+            "musica");
+
+            musicaCont.style.display =
+            "block";
+
+            musicaCont.style.opacity =
+            "1";
+
+            musica.load();
+
             musica.volume = 0.5;
 
-          
             musica.play().catch(() => {
-              console.log("Auto-play bloqueado por Chrome. El reproductor es visible para ella.");
+
+              console.log(
+              "Dale play manualmente.");
+
             });
 
-          }, 1400); // Retardo después de que sale el papel (1.2s de animación de papel + 0.2s extra)
+          }, 1400);
 
-        }, 100); // Breve retardo para asegurar que el sobre 'apareció'
+        }, 100);
 
-      }, 500); // Tiempo que tarda el botón en desaparecer
+      }, 500);
+
     }
 
   </script>
