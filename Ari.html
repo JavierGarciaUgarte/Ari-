@@ -7,7 +7,7 @@
   <title>Para ti ❤️</title>
 
   <style>
-    /* RESET BÁSICO */
+    
     * {
       margin: 0;
       padding: 0;
@@ -19,8 +19,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden; /* Mantiene la animación limpia en móviles */
-      font-family: "Segoe UI", "apple-system", sans-serif; /* Mejores fuentes para móvil */
+      overflow: hidden; 
+      font-family: "Segoe UI", "apple-system", sans-serif; 
 
       background:
         radial-gradient(circle at center, rgba(255, 210, 120, 0.25), transparent 30%),
@@ -45,7 +45,7 @@
       to { background-position: 0 -500px; }
     }
 
-    /* CONTENEDOR PRINCIPAL: LA CARTA */
+    
     .carta {
       position: relative;
       z-index: 2; /* Encima del efecto de brasas */
@@ -153,7 +153,7 @@
     /* Estado de la tapa cuando se abre */
     .abrir-tapa .tapa {
       transform: rotateX(180deg);
-      clip-path: polygon(0 0, 100% 0, 50% 60%); /* Mantenemos el clip path para la forma */
+      clip-path: polygon(0 0, 100% 0, 50% 60%); 
       z-index: 1; /* Pasa detrás del papel al abrirse */
     }
 
@@ -314,8 +314,7 @@
             // Bajamos el volumen inicial para que no asuste
             musica.volume = 0.5;
 
-            // Intentamos reproducir automáticamente, pero no dependemos de ello.
-            // Si el navegador lo bloquea, ella verá el reproductor.
+          
             musica.play().catch(() => {
               console.log("Auto-play bloqueado por Chrome. El reproductor es visible para ella.");
             });
